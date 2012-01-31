@@ -85,6 +85,16 @@ public:
         return *this;
     }
 
+	inline FLOAT_TYPE &x()
+	{
+		return mElements[0];
+	}
+
+	inline FLOAT_TYPE &y()
+	{
+		return mElements[1];
+	}
+
 protected:
     // componentwise mult
 //     inline const Vec2 operator*(const Vec2 &rhs) const

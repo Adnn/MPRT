@@ -13,9 +13,13 @@ class Vec2;
 class Tools_Export Sampler
 {
 public:
-   typedef std::vector<Vec2> Vec2Cont;
- //2D sampling
-    void random (Vec2Cont &aSamples, Vec2Cont::size_type aNumSamples);
+	typedef std::vector<Vec2> Vec2Cont;
+	//2D sampling
+    void random (Vec2Cont &aSamples);
+
+	//filtering
+	void boxFilter(Vec2Cont &aSamples);
+
 };
 
 } //namespace
