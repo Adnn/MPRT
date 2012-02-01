@@ -13,7 +13,7 @@ using namespace MPRT;
 #define WIDTH 500
 #define HEIGHT 500
 
-#define SAMPLES 256
+#define SAMPLES 32
 
 int main()
 {
@@ -49,7 +49,7 @@ int main()
             x<WIDTH;
             ++x)
         {
-			sampler.random(origins);
+			sampler.jitter(origins);
 			sampler.boxFilter(origins);
 
 			for(unsigned int sampleId = 0;
@@ -66,13 +66,13 @@ int main()
 				}
 			}
 
-			tmpPixel.AbstractVec3::operator/=(FLOAT_TYPE(SAMPLES));
+			tmpPixel/=(FLOAT_TYPE(SAMPLES));
 			// Transformation from right handed coordinates to image coordinates
 			image.setPixel(x, (HEIGHT-1-y), tmpPixel);
         }
     }
 
-    std::ofstream outFile("D:/RayTraced/256Samples.ppm", std::ios_base::binary);
+    std::ofstream outFile("D:/RayTraced/32Samples.ppm", std::ios_base::binary);
 	image.writePPM(outFile);
 
     return 0;

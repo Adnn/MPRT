@@ -14,11 +14,22 @@ class Tools_Export Sampler
 {
 public:
 	typedef std::vector<Vec2> Vec2Cont;
-	//2D sampling
-    void random (Vec2Cont &aSamples);
+
+    //2D sampling
+    void random(Vec2Cont &aSamples);
+    void nRooks(Vec2Cont &aSamples);
+    void jitter(Vec2Cont &aSamples);
+    void multiJitter(Vec2Cont &aSamples);
+    void shuffle(Vec2Cont &aSamples);
 
 	//filtering
 	void boxFilter(Vec2Cont &aSamples);
+
+private:
+    inline Vec2Cont::size_type getSamplesCount(Vec2Cont &aSamples)
+    {
+        return aSamples.size();
+    }
 
 };
 

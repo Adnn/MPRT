@@ -18,6 +18,8 @@ public:
 	{
 	}
 
+    using AbstractVec3::operator/=;
+
 	Rgb(FLOAT_TYPE aX, FLOAT_TYPE aY, FLOAT_TYPE aZ) :
 		AbstractVec3(aX, aY, aZ)
 	{
