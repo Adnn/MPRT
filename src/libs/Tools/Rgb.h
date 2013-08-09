@@ -10,7 +10,7 @@
 namespace MPRT
 {
 
-class Tools_Export Rgb : public AbstractVec3
+class Tools_Export Rgb : public AbstractVec3<Rgb>
 {
 public:
 	Rgb() :
@@ -18,33 +18,9 @@ public:
 	{
 	}
 
-    using AbstractVec3::operator/=;
-
 	Rgb(FLOAT_TYPE aX, FLOAT_TYPE aY, FLOAT_TYPE aZ) :
 		AbstractVec3(aX, aY, aZ)
 	{
-	}
-
-	inline const Rgb operator*(const Rgb &rhs) const
-	{
-		return AbstractVec3::operator*(rhs);
-	}
-	
-	inline Rgb &operator*=(const Rgb &rhs)
-	{
-		AbstractVec3::operator*=(rhs);
-		return *this;
-	}
-
-	inline const Rgb operator/(const Rgb &rhs) const
-	{
-		return AbstractVec3::operator/(rhs);
-	}
-	
-	inline Rgb &operator/=(const Rgb &rhs)
-	{
-		AbstractVec3::operator/=(rhs);
-		return *this;
 	}
 
 	inline FLOAT_TYPE r() const
@@ -69,14 +45,6 @@ public:
 			pow(mElements[1],power),
 			pow(mElements[2],power));
 	}
-
-protected:
-	// todo : replace by type defined casting
-	Rgb(const AbstractVec3 &aParent) :
-	AbstractVec3(aParent)
-	{
-	}
-
 };
 
 } // namespace

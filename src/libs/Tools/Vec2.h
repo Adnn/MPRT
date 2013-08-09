@@ -6,6 +6,9 @@
 namespace MPRT
 {
 
+// Default initialization (i.e. zeroing) of elements in mElements is what we want, no need to tell us this is the invoked behavior
+#pragma warning(disable : 4351)
+
 class Vec2
 {
 public:
@@ -14,8 +17,9 @@ public:
     {
     }
 
-    Vec2(FLOAT_TYPE aX, FLOAT_TYPE aY) :
-        mElements()
+#pragma warning(default : 4351)
+
+    Vec2(FLOAT_TYPE aX, FLOAT_TYPE aY)
     {
         mElements[0]=aX;
         mElements[1]=aY;

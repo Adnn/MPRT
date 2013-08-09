@@ -17,7 +17,7 @@ inline FLOAT_TYPE Tools_Export normalRand()
     return FLOAT_TYPE(rand() / FLOAT_TYPE(RAND_MAX));
 }
 
-inline FLOAT_TYPE sqrt(unsigned int aValue)
+inline FLOAT_TYPE sqrtInt(unsigned int aValue)
 {
     return ::sqrt(FLOAT_TYPE(aValue));
 }

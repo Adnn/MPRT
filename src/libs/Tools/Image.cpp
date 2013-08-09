@@ -34,6 +34,7 @@ void Image::PixelWriterPPM::operator()(const Rgb &aPixel)
 
 	const Rgb &writtenPix(aPixel);
 
+	/// \todo : resolve warnings
 	iR = writtenPix.r()*256;
 	iR = iR>255 ? 255 : iR;
 

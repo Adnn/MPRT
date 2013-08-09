@@ -35,6 +35,7 @@ void Sampler::nRooks(Vec2Cont &aSamples)
         currentSample >= 0;
         --currentSample)
     {
+		// normalRand value is between 0. and 1., no loss of data would occur in the cast
         Vec2Cont::size_type target(normalRand() * currentSample);
 
         FLOAT_TYPE tmpX = aSamples[currentSample+1].x();
@@ -45,7 +46,7 @@ void Sampler::nRooks(Vec2Cont &aSamples)
 
 void Sampler::jitter(Vec2Cont &aSamples)
 {
-    Vec2Cont::size_type sqrtSamples = sqrt(getSamplesCount(aSamples));
+    Vec2Cont::size_type sqrtSamples = sqrtInt(getSamplesCount(aSamples));
     Vec2Cont::size_type currentSample = 0;
 
     for(Vec2Cont::size_type xArea=0;
@@ -68,7 +69,7 @@ void Sampler::jitter(Vec2Cont &aSamples)
 void Sampler::multiJitter(Vec2Cont &aSamples)
 {
     Vec2Cont::size_type totalSamples(getSamplesCount(aSamples));
-    Vec2Cont::size_type sqrtSamples = sqrt(totalSamples);
+    Vec2Cont::size_type sqrtSamples = sqrtInt(totalSamples);
     FLOAT_TYPE subcellWidth = static_cast<FLOAT_TYPE>(1) / totalSamples;
     Vec2Cont::size_type currentSample = 0;
 

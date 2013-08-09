@@ -9,7 +9,7 @@
 namespace MPRT
 {
 
-class Tools_Export Vec3 : public AbstractVec3
+class Vec3 : public AbstractVec3<Vec3>
 {
 public:
 	Vec3() :
@@ -73,12 +73,6 @@ public:
 	{
 		return mElements[2];
 	};
-
-protected:
-	//Vec3(const AbstractVec3 &aParent) :
-	//	AbstractVec3(aParent)
-	//{
-	//}
 };
 
 } // namespace
