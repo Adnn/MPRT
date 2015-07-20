@@ -1,4 +1,4 @@
-project(Tools)
+project(TracingTools)
 
 # Configure (and thus copy) the template export file to the build dir
 # The export file will be added to the project headers list (and installed with them)
@@ -8,31 +8,13 @@ configure_file(${CMAKE_SOURCE_DIR}/cmake/Export.h.in
 
 set(${PROJECT_NAME}_HEADERS
 	${CMAKE_BINARY_DIR}/include/${PROJECT_NAME}_Export.h
-	AbstractVec3.h
-	Frame.h
-	Image.h
-	Light.h
-	Material.h
-	mprt.h
-	OrthonormalBasis.h
-	Rgb.h
-	Sampler.h
-	Vec2.h
-	Vec3.h
-	VecTmp.h
+    Camera.h
+    Scene.h
 )
 
 set(${PROJECT_NAME}_SOURCES
-	AbstractVec3.cpp
-	Frame.cpp
-	Image.cpp
-	Light.cpp
-	Material.cpp
-	OrthonormalBasis.cpp
-	Rgb.cpp
-	Sampler.cpp
-	Vec2.cpp
-	Vec3.cpp
+    Camera.cpp
+    Scene.cpp
 )
 
 add_library(${PROJECT_NAME}
@@ -44,6 +26,8 @@ include_directories(
 )
 
 target_link_libraries(${PROJECT_NAME}
+    Tools
+    Geometry
 )
 
 ######################################################################

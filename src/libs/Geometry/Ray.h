@@ -20,6 +20,7 @@ public :
     inline void setDirection(const Vec3 &aDirection)
     {
         mDirection = aDirection;
+        mDirection.normalize();
     }
 
     inline void setOrigin(const Vec3 &aOrigin)

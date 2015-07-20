@@ -22,12 +22,14 @@ public:
 	{
 	}
 
-	inline FLOAT_TYPE length()
+    using AbstractVec3<Vec3>::operator*; // make the componentwise multiplication public
+
+	inline FLOAT_TYPE length() const
 	{
 		return sqrt(length2());
 	}
 
-	inline FLOAT_TYPE length2()
+	inline FLOAT_TYPE length2() const
 	{
 		return 
 			mElements[0]*mElements[0] +
@@ -74,6 +76,11 @@ public:
 		return mElements[2];
 	};
 };
+
+inline const Vec3 normalize(Vec3 aVec3)
+{
+    return aVec3.normalize();
+}
 
 } // namespace
 

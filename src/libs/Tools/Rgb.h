@@ -23,6 +23,8 @@ public:
 	{
 	}
 
+    using AbstractVec3<Rgb>::operator*; // make the componentwise multiplication public
+
 	inline FLOAT_TYPE r() const
 	{
 		return mElements[0];
@@ -45,6 +47,14 @@ public:
 			pow(mElements[1],power),
 			pow(mElements[2],power));
 	}
+    
+public:
+    static const Rgb RED;
+    static const Rgb GREEN;
+    static const Rgb BLUE;
+
+    static const Rgb BLACK;
+    static const Rgb WHITE;
 };
 
 } // namespace

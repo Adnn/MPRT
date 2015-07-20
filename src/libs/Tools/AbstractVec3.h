@@ -9,7 +9,7 @@ namespace MPRT
 {
 
 template <class T>
-inline const T operator*(const FLOAT_TYPE aScalar, const T &rhs)
+typename std::enable_if<std::is_class<T>::value, const T>::type operator*(const FLOAT_TYPE aScalar, const T &rhs)
 {
 	return T(aScalar*rhs.mElements[0], aScalar*rhs.mElements[1], aScalar*rhs.mElements[2]);
 }
@@ -106,6 +106,18 @@ public:
 		mElements[2]-=rhs.mElements[2];
 		return *static_cast<T_Derived*>(this);
 	}
+
+    bool operator==(const T_Derived &rhs) const
+    {
+        return mElements[0]==rhs.mElements[0]
+            && mElements[1]==rhs.mElements[1]
+            && mElements[2]==rhs.mElements[2];
+    }
+
+    bool operator!=(const T_Derived &rhs) const
+    {
+        return !(*this == rhs);
+    }
 
 protected:
 

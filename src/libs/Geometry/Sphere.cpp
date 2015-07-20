@@ -2,11 +2,12 @@
 
 using namespace MPRT;
 
-Sphere::Sphere(const Vec3 &aCenter, const FLOAT_TYPE aRadius, const Rgb &aColor) :
-    Surface(aColor),
+const Material Surface::DEFAULT_MATERIAL(Rgb(0.1, 0.1, 0.1), Rgb(0.5, 0.5, 0.5), Rgb(0., 0., 0.));
+
+Sphere::Sphere(const Vec3 &aCenter, const FLOAT_TYPE aRadius, const Material aMaterial) :
+    Surface(aMaterial),
 	mCenter(aCenter),
-	mRadius(aRadius),
-	mColor(aColor)
+	mRadius(aRadius)
 {
 }
 
@@ -20,10 +21,10 @@ bool Sphere::hit(const HitParameters &aParams, HitRecord &aRecord) const
 
 	FLOAT_TYPE discriminant = b*b - 4*a*c;
 
-	// is there an interesction ?
-	if (discriminant > 0)
+	// is there an intersection ?
+	if (discriminant > 0.)
 	{
-		discriminant = sqrt(discriminant);
+		discriminant = ::sqrt(discriminant);
 
 		// closest hit
 		double t = (-b - discriminant) / (2*a);
@@ -44,4 +45,9 @@ bool Sphere::hit(const HitParameters &aParams, HitRecord &aRecord) const
 	}
 
 	return false;
+}
+
+Vec3 Sphere::getNormalAt(const Vec3 &aSurfacePoint) const
+{
+    return (aSurfacePoint-mCenter)/mRadius;
 }

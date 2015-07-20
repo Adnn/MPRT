@@ -17,9 +17,12 @@ public:
 	Image(unsigned int aXRes, unsigned int aYRes);
 	Image(unsigned int aXRes, unsigned int aYRes, const Rgb &aBackgroundColor);
 
+    /// \brief : Assign a pixel's color.
+    /// The image frame origin is fixed in le lower left corner (to be consistent with screen space's coordinates).
+    /// This is the opposite of the ppm file format (first given pixel is upper left corner).
 	inline void setPixel(unsigned int aX, unsigned int aY, const Rgb &aPixelColor)
 	{
-		mImageBuffer[aX][aY] = aPixelColor;
+		mImageBuffer[aX][mYRes-1-aY] = aPixelColor;
 	}
 
 	void writePPM(std::ostream &aDumpStream);
@@ -27,7 +30,7 @@ public:
 protected:
 
 	template<class T_PixelFunctor>
-	void forEachPixel(T_PixelFunctor &aPitor)
+	void forEachPixel(T_PixelFunctor aPitor)
 	{
 		for(unsigned int yId=0;
 			yId<mYRes;

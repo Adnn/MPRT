@@ -1,41 +1,13 @@
-project(Tools)
-
-# Configure (and thus copy) the template export file to the build dir
-# The export file will be added to the project headers list (and installed with them)
-configure_file(${CMAKE_SOURCE_DIR}/cmake/Export.h.in
-        ${CMAKE_BINARY_DIR}/include/${PROJECT_NAME}_Export.h
-        @ONLY)
+project(Bawls)
 
 set(${PROJECT_NAME}_HEADERS
-	${CMAKE_BINARY_DIR}/include/${PROJECT_NAME}_Export.h
-	AbstractVec3.h
-	Frame.h
-	Image.h
-	Light.h
-	Material.h
-	mprt.h
-	OrthonormalBasis.h
-	Rgb.h
-	Sampler.h
-	Vec2.h
-	Vec3.h
-	VecTmp.h
 )
 
 set(${PROJECT_NAME}_SOURCES
-	AbstractVec3.cpp
-	Frame.cpp
-	Image.cpp
-	Light.cpp
-	Material.cpp
-	OrthonormalBasis.cpp
-	Rgb.cpp
-	Sampler.cpp
-	Vec2.cpp
-	Vec3.cpp
 )
 
-add_library(${PROJECT_NAME}
+add_executable(${PROJECT_NAME}
+	main.cpp
 	${${PROJECT_NAME}_SOURCES}
 	${${PROJECT_NAME}_HEADERS}
 )
@@ -44,6 +16,9 @@ include_directories(
 )
 
 target_link_libraries(${PROJECT_NAME}
+	Tools
+	Geometry
+	TracingTools
 )
 
 ######################################################################

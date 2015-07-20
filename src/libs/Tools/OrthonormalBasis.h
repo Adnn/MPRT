@@ -14,7 +14,9 @@ public:
 	OrthonormalBasis();
 	OrthonormalBasis(const Vec3 &u, const Vec3 &v, const Vec3 &w);
 
-private:
+	OrthonormalBasis(const Vec3 &aW, const Vec3 &aUp);
+
+public:
 	Vec3 mU, mV, mW;
 };
 

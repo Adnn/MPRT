@@ -25,3 +25,8 @@ void Group::addChild(SurfacePtr aChild)
 {
     mChildren.push_back(aChild);
 }
+
+Vec3 Group::getNormalAt(const Vec3 &aSurfacePoint) const
+{
+    return Vec3(0., 0., 0.);
+}

@@ -18,12 +18,15 @@ using namespace MPRT;
 int main()
 {
 
-    SurfacePtr sphere = std::make_shared<Sphere>(Vec3(250., 250., -1000.), 150., Rgb(0., 0., 1.));
+    Material sphereMat(Rgb::BLUE, Rgb::BLACK, Rgb::BLACK);
+    Material triangleMat(Rgb::RED, Rgb::BLACK, Rgb::BLACK);
+    
+    SurfacePtr sphere = std::make_shared<Sphere>(Vec3(250., 250., -1000.), 150., sphereMat);
     SurfacePtr triangle = std::make_shared<Triangle>(
         Vec3(300., 600., -800.),
         Vec3(0., 100., -1000.),
         Vec3(450., 20., -1000.),
-        Rgb(1., 0., 0.) );
+        triangleMat );
 
     std::shared_ptr<Group> group = std::make_shared<Group>();
     group->addChild(sphere);
@@ -31,7 +34,7 @@ int main()
     
     Image image(WIDTH, HEIGHT, Rgb(.3, .3, .3));
 
-    HitParameters hitParams = { Ray(Vec3(0., 0., 0.), Vec3(0., 0., -1.)), 0., 2000.};
+    HitParameters hitParams (Ray(Vec3(0., 0., 0.), Vec3(0., 0., -1.)), 0., 2000.);
 
     HitRecord record;
 
@@ -62,13 +65,13 @@ int main()
 						 0));
 				if (group->hit(hitParams, record))
 				{
-					tmpPixel += record.hitSurface->getColor();
+					tmpPixel += record.hitSurface->getMaterial().ambientColor;
 				}
 			}
 
 			tmpPixel/=(FLOAT_TYPE(SAMPLES));
 			// Transformation from right handed coordinates to image coordinates
-			image.setPixel(x, (HEIGHT-1-y), tmpPixel);
+			image.setPixel(x, y, tmpPixel);
         }
     }
 

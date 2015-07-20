@@ -89,6 +89,16 @@ public:
         return *this;
     }
 
+	inline const FLOAT_TYPE &x() const
+	{
+		return mElements[0];
+	}
+
+	inline const FLOAT_TYPE &y() const
+	{
+		return mElements[1];
+	}
+
 	inline FLOAT_TYPE &x()
 	{
 		return mElements[0];
@@ -98,6 +108,8 @@ public:
 	{
 		return mElements[1];
 	}
+
+
 
 protected:
     // componentwise mult

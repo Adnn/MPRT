@@ -2,12 +2,14 @@
 
 using namespace MPRT;
 
-Triangle::Triangle(const Vec3 &aVertexA, const Vec3 &aVertexB, const Vec3 &aVertexC, const Rgb &aColor) :
-    Surface(aColor),
+Triangle::Triangle(const Vec3 &aVertexA, const Vec3 &aVertexB, const Vec3 &aVertexC, Material aMaterial) :
+    Surface(aMaterial),
 	mA(aVertexA),
 	mB(aVertexB),
-	mC(aVertexC)
+	mC(aVertexC),
+    mNormal((mB-mA).crossP(mC-mA))
 {
+    mNormal.normalize();
 }
 
 bool Triangle::hit(const HitParameters &aParams, HitRecord &aRecord) const
@@ -56,4 +58,9 @@ bool Triangle::hit(const HitParameters &aParams, HitRecord &aRecord) const
 	}
 
 	return false;
+}
+
+Vec3 Triangle::getNormalAt(const Vec3 &aSurfacePoint) const
+{
+    return mNormal;
 }

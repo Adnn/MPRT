@@ -46,7 +46,7 @@ void Sampler::nRooks(Vec2Cont &aSamples)
 
 void Sampler::jitter(Vec2Cont &aSamples)
 {
-    Vec2Cont::size_type sqrtSamples = sqrtInt(getSamplesCount(aSamples));
+    Vec2Cont::size_type sqrtSamples = std::sqrt(getSamplesCount(aSamples));
     Vec2Cont::size_type currentSample = 0;
 
     for(Vec2Cont::size_type xArea=0;
@@ -69,7 +69,7 @@ void Sampler::jitter(Vec2Cont &aSamples)
 void Sampler::multiJitter(Vec2Cont &aSamples)
 {
     Vec2Cont::size_type totalSamples(getSamplesCount(aSamples));
-    Vec2Cont::size_type sqrtSamples = sqrtInt(totalSamples);
+    Vec2Cont::size_type sqrtSamples = std::sqrt(totalSamples);
     FLOAT_TYPE subcellWidth = static_cast<FLOAT_TYPE>(1) / totalSamples;
     Vec2Cont::size_type currentSample = 0;
 

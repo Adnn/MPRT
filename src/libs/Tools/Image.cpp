@@ -30,9 +30,9 @@ void Image::PixelWriterPPM::operator()(const Rgb &aPixel)
 {
 	static unsigned int iR, iG, iB;
 
-	//Rgb writtenPix(aPixel.correctGama(GAMMA);
+	Rgb writtenPix(aPixel.correctGama(GAMMA));
 
-	const Rgb &writtenPix(aPixel);
+	//const Rgb &writtenPix(aPixel);
 
 	/// \todo : resolve warnings
 	iR = writtenPix.r()*256;
