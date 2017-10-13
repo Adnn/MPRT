@@ -31,7 +31,7 @@ void Sampler::nRooks(Vec2Cont &aSamples)
 
     //shuffle X coords.
     // TODO : I feel there is a correlation between target and currentSample...
-    for(Vec2Cont::size_type currentSample = totalSamples-2;
+    for(Vec2Cont::difference_type currentSample = totalSamples-2;
         currentSample >= 0;
         --currentSample)
     {
@@ -117,7 +117,7 @@ void Sampler::multiJitter(Vec2Cont &aSamples)
 
 void Sampler::shuffle(Vec2Cont &aSamples)
 {
-    for(Vec2Cont::size_type currentSample = getSamplesCount(aSamples)-2;
+    for(Vec2Cont::difference_type currentSample = getSamplesCount(aSamples)-2;
         currentSample >= 0;
         --currentSample)
     {
