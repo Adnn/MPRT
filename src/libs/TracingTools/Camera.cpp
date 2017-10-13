@@ -7,6 +7,7 @@
 #include <Tools/Sampler.h>
 #include <Tools/Vec2.h>
 
+#include <algorithm>
 #include <memory>
 
 using namespace MPRT;

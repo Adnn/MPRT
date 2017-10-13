@@ -63,7 +63,7 @@ int main()
     scene.mLights.push_back(std::shared_ptr<PointLight>(new PointLight(Vec3(-11., 8., 1.), lightMaterial)));
     Image image = camera.render(WIDTH, HEIGHT, scene, backgroundColor, 8); 
 
-    std::ofstream outFile("D:/RayTraced/scene.ppm", std::ios_base::binary);
+    std::ofstream outFile("./scene.ppm", std::ios_base::binary);
 	image.writePPM(outFile);
 
     return 0;

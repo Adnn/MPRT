@@ -118,6 +118,7 @@ option(BUILD_SHARED_LIBS "Build shared libraries" True)
 option(BUILD_WITH_C++11_SUPPORT "Set the compiler flags/options required to compile with C++11 support" true)
 
 if(BUILD_WITH_C++11_SUPPORT)
+    set(CMAKE_CXX_STANDARD 11)
 	IF(UNIX)
 		LIST(APPEND CMAKE_CXX_FLAGS "-std=c++0x")
 	ENDIF(UNIX)
